@@ -8,6 +8,12 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  // This medthod is being called by page method in our routes.js file.
+  // We declare a function to call next function in our route.
+  // We use article.findWhere to grab the id of the particular article, whose
+  // id matches the URI that we clicked on.
+  // That then fires the articleData function with the article we found
+  // Then we countine on with the next function in the chain.
   articlesController.loadById = function(ctx, next) {
     var articleData = function(article) {
       ctx.articles = article;
