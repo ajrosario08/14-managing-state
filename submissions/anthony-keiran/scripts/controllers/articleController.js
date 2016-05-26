@@ -35,6 +35,9 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  // This method will find the articles based on the category that the user has clicked on.
+  // We then save those articles in our ctx object.  finally contiune to the next funciton in the
+  // chain.  The filter articles will be availabile to the next function.
   articlesController.loadByCategory = function(ctx, next) {
     var categoryData = function(articlesInCategory) {
       ctx.articles = articlesInCategory;
