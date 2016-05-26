@@ -13,6 +13,7 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  // First, we're setting template equal to a Handlebars function that will be able to populate our option template. we then set options equal to a map function that will return an array with all of the authors as HTML option elements, using the template function. We then have an if statement that appends these option tags to the author filter, as long as this author has not already been appended. After this, we go through the same process with Article.allCategories. If the categories filter hasn't been populated, it will populate it with one option tag for each category it finds using rows.map and our template function.
   articleView.populateFilters = function() {
     var options,
       template = Handlebars.compile($('#option-template').text());
@@ -38,6 +39,7 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  // This method changes the displayed content when the user changes the filter. It uses event delegation on the ul with an id of filters, so that any time a select element that is a child of this ul is changed, it will run a function. This function will use page.js to update the URI depending on which select element is changed, and what option element it is changed to.
   articleView.handleFilters = function() {
     $('#filters').one('change', 'select', function() {
       resource = this.id.replace('-filter', '');
@@ -118,6 +120,7 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  // This method shows the article section and hides all sibling sections. It then removes every article element from the section with an id of articles. Next it runs a forEach loop that grabs all the articles from the ctx object of the URI that has been selected, and renders and appends these articles to the section with an id of articles.
   articleView.index = function(articles) {
     $('#articles').show().siblings().hide();
 
@@ -128,6 +131,7 @@
 
     articleView.populateFilters();
     // COMMENT: What does this method do?  What is it's execution path?
+    // This method is being called whenever articleView.index is called. This statement turns on the event handler for the filters, which allows page.js to redirect us to the correct URI when one of the filters is changed. That will pass control to our page function, which will update the URI, then run the correct controller functions to load the articles associated with that URI, and to display those articles on the page.
     articleView.handleFilters();
 
     // DONE: Replace setTeasers with just the truncation logic, if needed:
