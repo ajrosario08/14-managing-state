@@ -48,6 +48,11 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  // In this method we are checking to see if we have any articles in Article.all.
+  // If we do we set those in our ctx object.  Then we call the next function in our route, which will
+  // have the articles availible to it through the ctx object.  If we dont have any articles, we run fetchAll method
+  // to populate Article.all with the articleDta function passed in as an argument.  The articleData function is then
+  // called within the fetchAll method.  Which will eventually call our next function in our route.
   articlesController.loadAll = function(ctx, next) {
     var articleData = function(allArticles) {
       ctx.articles = Article.all;
