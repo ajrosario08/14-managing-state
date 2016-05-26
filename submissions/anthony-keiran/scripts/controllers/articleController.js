@@ -12,7 +12,7 @@
   // We declare a function to call next function in our route.
   // We use article.findWhere to grab the id of the particular article, whose
   // id matches the URI that we clicked on.
-  // That then fires the articleData function with the article we found
+  // That then fires the articleData function with the article we found.
   // Then we countine on with the next function in the chain.
   articlesController.loadById = function(ctx, next) {
     var articleData = function(article) {
@@ -24,6 +24,7 @@
   };
 
   // COMMENT: What does this method do?  What is it's execution path?
+  // In this funciton we are finding all the articles with a specific author name that matches the URI path.  That returns all the articles with the author name that we selected.  Then that is passed to the authorData funciton, which will set all the articles to our ctx object.  Finally we countine with the next function in our route.
   articlesController.loadByAuthor = function(ctx, next) {
     var authorData = function(articlesByAuthor) {
       ctx.articles = articlesByAuthor;
